@@ -1,0 +1,49 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo" style="padding-left: 10%">Logo</a>
+    <ul class="show-on-small">
+      <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i>menu</a></li>
+    </ul>
+    
+    <ul class=" right hide-on-med-and-down">
+        <li><input type="text" placeholder="Search for Products" style="width: 25em;"></li>
+        <li style="margin-right: 10px"><button class="btn"><i class="material-icons" style="margin-top: -10px">search</i></button></li>
+        <li *ngIf="logged_in$" class="valign-wrapper"><img class="userimage " [src]="userData$.image" alt=""></li>
+        <li *ngIf="logged_in$"><a class='dropdown-trigger' data-target='dropdown1'>My Account</a>
+
+          <!-- Dropdown Structure -->
+          
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">Logout</a></li>
+            <li><a href="#!">two</a></li>
+          </ul>
+        </li>
+
+        <li *ngIf="logged_in$"><a (click)="logout()">Logout</a></li>
+        <li *ngIf="!logged_in$"><a class="modal-trigger links" href="#loginModal">Login In</a></li>
+        <li *ngIf="!logged_in$"><a class="modal-trigger links" href="#loginModal">Sign Up</a></li>
+      
+        <li><span class="cart"><a routerLink="cart" class="waves-effect waves-light btn "><i class="material-icons left">shopping_cart</i>{{cart_item$}}</a></span></li>
+    </ul>
+    
+  </div>
+
+
+</nav>
+<ul id="slide-out" class="sidenav">
+  <li *ngIf="logged_in$"><div class="user-view">
+    <div class="background">
+      <img src="https://assets.box8.co.in/picture_resolutions/photos/000/002/116/original/1110-X-810-WebRajma-Curry-_-Basmati-Rice.jpg?1515228294">
+    </div>
+    <a href="#user" style="color: gray"><img class="circle" [src]="userData$.image" ></a>
+    <a href="#name"  style="color: gray"><span class="white-text name">{{userData$.name}}</span></a>
+    <a href="#email" style="color: gray"><span class="white-text email">{{userData$.email}}</span></a>
+  </div></li>
+  <li *ngIf="logged_in$"><a href="#!">My Orders</a></li>
+  <li *ngIf="logged_in$"><a href="#!">Logout</a></li>
+  
+  <li *ngIf="!logged_in$"><a class="modal-trigger" href="#loginModal">Login In</a></li>
+        <li *ngIf="!logged_in$"><a class="modal-trigger" href="#loginModal">Sign Up</a></li>
+  <li><div class="divider"></div></li>
+</ul>
+<app-signin ></app-signin>

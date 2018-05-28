@@ -1,0 +1,10 @@
+.loginbutton{
+    width:100%;
+    background-color:#fff;
+    height: 45px;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+.error_msg {
+    color:  #e53935;
+}

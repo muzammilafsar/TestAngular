@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col m1">
+    <div class="col m6"></div>
+  </div>
+  <div class="col m11 s12">
+    <div class="row">
+
+      <div class="col s12 m3" *ngFor="let product of product_list" >
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://materializecss.com/images/office.jpg">
+            </div>
+            <div class="card-content" style="padding: 8px">
+                <div class="row" style="margin-bottom: 0px">
+                    <div class="col s10 m10" style="padding-right: 0px">
+                        <span style="font-size: 20px" class="card-title activator grey-text text-darken-4">{{product.name}}</span>
+                    </div>
+                    <div class="col s2 m2">
+                      <img style="height: 27px; margin-top: 7px" src="data:image/png;base64,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" alt="">
+                    </div>
+                  </div>
+              
+              <p style="font-size: 14px">{{product.description}}</p>
+            <div class="row" style="margin-bottom: 0px; margin-top: 5px">
+              <div class="col s7 m7 price">₹ <span style="text-decoration: line-through">500</span> 300 </div>
+              <div class="col s5 m5"><button  (click)="addToCart(product)"class="btn addbtn">Add to Box</button></div>
+            </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
+              <p>{{product.description}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

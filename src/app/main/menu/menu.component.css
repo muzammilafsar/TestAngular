@@ -1,0 +1,13 @@
+.card .card-content {
+    padding: 8px;
+    
+}
+.addbtn{
+    padding-right: 9px;
+    padding-left: 9px;
+}
+.price{
+    margin-top: 3px;
+    font-size: 22px;
+    padding-left: 12px;
+}

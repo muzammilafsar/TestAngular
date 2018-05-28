@@ -1,0 +1,119 @@
+<!-- Modal Trigger -->
+<!-- <a class="waves-effect waves-light btn modal-trigger" href="#loginModal">Modal</a> -->
+
+<!-- Modal Structure -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <div class="row" *ngIf="loginMode">
+
+      <div class="row">
+        <div class="col s12 m12">
+          <h5 style="text-align: center">LOGIN</h5>
+        </div>
+        {{SignInForm.value.email.trim().length === 0 }} {{SignInForm.get('email').touched}}
+        <form [formGroup]="SignInForm">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" formControlName="email" required>
+            <label for="email">Email</label>
+            <span class="helper-text error_msg" *ngIf="SignInForm.value.email.trim().length === 0  && SignInForm.get('email').touched">Please enter Email</span>
+            <span class="helper-text error_msg" *ngIf="SignInForm.value.email.trim().length !== 0 && !SignInForm.get('email').valid && SignInForm.get('email').touched">Please enter valid Email</span>
+          </div>
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate" formControlName="password" required>
+            <label for="password">Password</label>
+            <span class="helper-text error_msg" *ngIf="!SignInForm.get('password').valid && SignInForm.get('password').touched">Please enter Password</span>
+          </div>
+
+        </form>
+        <span *ngIf="loginError">{{errorMsg}}</span>
+      </div>
+      <div class="col s12 m12">
+        <div class="row">
+          <div class="col s12 m4">
+            <button class="btn " style="width:100%;height: 45px;margin-top: 5px" (click)="localLogin()">Login</button>
+          </div>
+          <div class="col s12 m4">
+            <button class="btn loginbutton" (click)="socialSignIn('google')">
+              <div class="row">
+                <div class="col s3 m3" style="padding: 0px">
+                  <img style="height: 30px; margin-top: 3px;margin-right: 7px;" src="https://box8.in/images/google_sign.1701ad07.png" height="80%"
+                    alt="">
+
+                </div>
+                <div class="col s9 m9" style="padding: 0px">
+                  <span style="color: grey">
+                    Google Login
+                  </span>
+                </div>
+              </div>
+
+            </button>
+          </div>
+          <div class="col s12 m4">
+            <button class="btn loginbutton" (click)="socialSignIn('facebook')">
+              <div class="row">
+                <div class="col s3 m3" style="padding: 0px">
+                  <img style="height: 30px; margin-top: 3px;margin-right: 7px;" src="https://en.facebookbrand.com/wp-content/uploads/2016/05/FB-fLogo-Blue-broadcast-2.png  "
+                    height="80%" alt="">
+                </div>
+                <div class="col s9 m9" style="padding: 0px">
+                  <span style="color: grey">
+                    Facebook Login
+                  </span>
+                </div>
+              </div>
+
+            </button>
+          </div>
+
+
+
+        </div>
+        <div class="row">
+          <div class="col s12 m12">
+             <span><a (click)="loginMode=false;">not a user? signup</a></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row" *ngIf="!loginMode">
+
+      <div class="row">
+        <div class="col s12 m12">
+          <h5 style="text-align: center">REGISTER</h5>
+        </div>
+       
+        <form [formGroup]="RegisterForm">
+            <div class="input-field col s12">
+                <input id="name" type="text" class="validate" formControlName="name" required>
+                <label for="name">Name</label>
+                <span class="helper-text error_msg" *ngIf="RegisterForm.value.name.trim().length === 0  && RegisterForm.get('name').touched">Please enter Email</span>
+                <span class="helper-text error_msg" *ngIf="RegisterForm.value.name.trim().length !== 0 && !RegisterForm.get('name').valid && RegisterForm.get('name').touched">Please enter valid Email</span>
+              </div>
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" formControlName="email" required>
+            <label for="email">Email</label>
+            <span class="helper-text error_msg" *ngIf="RegisterForm.value.email.trim().length === 0  && RegisterForm.get('email').touched">Please enter Email</span>
+            <span class="helper-text error_msg" *ngIf="RegisterForm.value.email.trim().length !== 0 && !RegisterForm.get('email').valid && RegisterForm.get('email').touched">Please enter valid Email</span>
+          </div>
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate" formControlName="password" required maxlength="50" minlength="8">
+            <label for="password">Password</label>
+            <span class="helper-text error_msg" *ngIf="!RegisterForm.get('password').valid && RegisterForm.get('password').touched && RegisterForm.value.password.length === 0">Please enter Password</span>
+          </div>
+          <div class="input-field col s12">
+            <input id="password2" type="password" class="validate" formControlName="password2" required>
+            <label for="password2">Confirm your Password</label>
+            <span class="helper-text error_msg" *ngIf="RegisterForm.get('password2').touched && RegisterForm.value.password2.length === 0 ">Please confirm your Password</span>
+            <span class="helper-text error_msg" *ngIf=" RegisterForm.get('password2').touched && RegisterForm.value.password2 !== RegisterForm.value.password">Password do not match</span>
+          </div>
+          <button class="btn" (click)="registerUser()">Register</button>
+        </form>
+        <span >{{registerErrorMsg}}</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>

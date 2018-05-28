@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col m8 s12">
+    <div class="card-panel" style="padding-top: 1px">
+      <h6>MY CART</h6>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="card horizontal" *ngFor="let item of items">
+          <div class="card-image">
+            <img style="height:160px" src="https://assets.box8.co.in/picture_resolutions/photos/000/002/108/original/1110-X-810-Web-Paneer-Makhni-Curry-_-Paratha.jpg?1515227732">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <span style="font-size: 25px">Hydrabadi birayni</span>
+              <button class="btn" (click)="remove(item._id)">Remove</button>
+              <button (click)="decrement(item._id)">-</button>
+              qty : {{item.quantity}}
+              <button (click)="increment(item._id)"> +</button>
+              <div>
+                price{{ item.price * item.quantity}}
+              </div>
+            </div>
+            <!-- <div class="card-action">
+              <a href="#">This is a link</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h6>Price Detail</h6>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Price ({{items.length}} items)</span><span class="right-align">{{total_price}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Delivery Charges</span><span class="right-align">40</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Amount payable</span><span class="right-align">{{total_price+40}}</span>
+        </div>
+      </div>
+      <button class="btn">Place Order</button>
+    </div>
+  </div>
+</div>

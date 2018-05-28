@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col s12 m8">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header disabled">
+          <i class="material-icons">filter_drama</i>Delivery Address</div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col">
+              <form class="col s12" [formGroup]="addressForm">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" formControlName="name" id="aname" type="text" class="validate" For>
+                    <label for="aname">Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="mobile" type="number" formControlName="mobile" class="validate">
+                    <label for="mobile">Mobile</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" formControlName="pincode" id="pincode" type="number" class="validate">
+                    <label for="pincode">Pincode</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="locality" type="text" formControlName="locality" class="validate">
+                    <label for="locality">Locality</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="address" formControlName="address" class="materialize-textarea"></textarea>
+                    <label for="address">Address</label>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" formControlName="city" id="city" type="text" class="validate">
+                    <label for="city">City</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <select formControlName="state">
+                      <option value="" disabled selected>Choose your State</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>State</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" formControlName="landmark" id="landmark" type="text" class="validate">
+                    <label for="landmark">Landmark(Optional)</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="alt_mobile" type="number" formControlName="alt_mobile" class="validate">
+                    <label for="alt_mobile">Alternate Mobile</label>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">filter_drama</i>Order Summary</div>
+        <div class="collapsible-body">
+          <div class="card horizontal" *ngFor="let item of items">
+            <div class="card-image">
+              <img style="height:160px" src="https://assets.box8.co.in/picture_resolutions/photos/000/002/108/original/1110-X-810-Web-Paneer-Makhni-Curry-_-Paratha.jpg?1515227732">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <span style="font-size: 25px">Hydrabadi birayni</span>
+                <button class="btn" (click)="remove(item._id)">Remove</button>
+                <button (click)="decrement(item._id)">-</button>
+                qty : {{item.quantity}}
+                <button (click)="increment(item._id)"> +</button>
+                <div>
+                  price{{ item.price * item.quantity}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">filter_drama</i>Payment</div>
+        <div class="collapsible-body">
+          <span>Cash on Delivery</span>
+          <button class="btn" (click)="placeOrder()">Place Order</button>
+        </div>
+      </li> 
+
+    </ul>
+
+  </div>
+  <div class="col s122 m4">
+    <div class="card-panel">
+      <h6>Price Detail</h6>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Price ({{items.length}} items)</span>
+          <span class="right-align">{{total_price}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Delivery Charges</span>
+          <span class="right-align">40</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s12">
+          <span class="left-align">Amount payable</span>
+          <span class="right-align">{{total_price+40}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
