@@ -8,6 +8,7 @@ import { ApiserviceService } from '../apiservice.service';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 const AppRoutes: Routes = [
   {
     path: '' ,
@@ -24,6 +25,10 @@ const AppRoutes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent
   }
 ];
 
@@ -33,7 +38,7 @@ const AppRoutes: Routes = [
     RouterModule.forRoot(AppRoutes),
     ReactiveFormsModule
   ],
-  declarations: [HomepageComponent, MenuComponent, CartComponent, CheckoutComponent],
+  declarations: [HomepageComponent, MenuComponent, CartComponent, CheckoutComponent, ProductDetailComponent],
   providers:[ApiserviceService]
 })
 export class MainModule { }
